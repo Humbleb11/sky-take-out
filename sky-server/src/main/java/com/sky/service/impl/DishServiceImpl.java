@@ -93,4 +93,49 @@ public class DishServiceImpl implements DishService {
             dishFlavorMapper.deleteByDishId(id);
         }
     }
+    //根据Id查询菜品和对应口味数据
+    @Override
+    public DishVO getByIdWithFlavor(Long id) {
+        //根据Id查询菜品数据
+        Dish dish = dishMapper.getById(id);
+
+        //根据Id查询口味数据
+        List<DishFlavor> dishFlavors = dishFlavorMapper.getByDishiId(id);
+        //将查询的数据封装到VO
+        DishVO dishVO = new DishVO();
+        BeanUtils.copyProperties(dish,dishVO);
+        dishVO.setFlavors(dishFlavors);
+        return dishVO;
+    }
+    //修改菜品
+    @Override
+    public void updateWithFlavor(DishDTO dishDTO) {
+        //修改菜品表基本信息
+            Dish dish = new Dish();
+            BeanUtils.copyProperties(dishDTO,dish);
+
+        //删除原有的口味数据
+        dishMapper.update(dish);
+
+        //删除原有的口味数据
+        dishFlavorMapper.deleteByDishId(dishDTO.getId());
+
+        //重新插入口味数据
+        List<DishFlavor> flavors = dishDTO.getFlavors();
+        if(flavors != null && !flavors.isEmpty()){
+            flavors.forEach(dishFlavor -> {
+                dishFlavor.setDishId(dishDTO.getId());
+            });
+            //向口味表插入n条数据
+            dishFlavorMapper.insertBatch(flavors);
+        }
+    }
+   //根据分类id查询菜品
+    public List<Dish> list(Long categoryId) {
+        Dish dish = Dish.builder()
+                .categoryId(categoryId)
+                .status(StatusConstant.ENABLE)
+                .build();
+        return dishMapper.list(dish);
+    }
 }
