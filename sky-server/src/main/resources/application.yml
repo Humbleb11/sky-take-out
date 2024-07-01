@@ -36,9 +36,5 @@ sky:
     # 设置jwt过期时间
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
+
     admin-token-name: token
-  alioss:
-    endpoint: oss-cn-chengdu.aliyuncs.com
-    access-key-id: LTAI5tGAG73UBkjSBvCksBf4
-    access-key-secret: wIq7ENeIVsoUHTz4Jw1GVZFAK5HqqW
-    bucket-name: sky-humble
