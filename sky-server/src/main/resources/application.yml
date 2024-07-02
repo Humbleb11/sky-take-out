@@ -41,10 +41,18 @@ sky:
     # 设置jwt过期时间
     admin-ttl: 7200000
     # 设置前端传递过来的令牌名称
-
     admin-token-name: token
+    # 设置jwt签名加密时使用的秘钥
+    user-secret-key: humble
+    # 设置jwt过期时间
+    user-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    user-token-name: authenticaation
   alioss:
     endpoint: oss-cn-chengdu.aliyuncs.com
     access-key-id: LTAI5tGAG73UBkjSBvCksBf4
     access-key-secret: wIq7ENeIVsoUHTz4Jw1GVZFAK5HqqW
     bucket-name: sky-humble
+  wechat:
+    appid: wxf080427d0444d985
+    secret: 48fde871d0fd3cc64ce1c95112c71970
