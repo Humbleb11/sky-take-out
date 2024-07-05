@@ -18,4 +18,5 @@
             (#{sd.setmealId},#{sd.dishId},#{sd.name},#{sd.price},#{sd.copies})
         </foreach>
     </insert>
+
 </mapper>
