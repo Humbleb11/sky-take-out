@@ -49,8 +49,8 @@ public class ReportServiceImpl implements ReportService {
         // 查询每天的营业额并添加到turnoverList中
         for (LocalDate date : dateList) {
             //查询date日期对应的营业额数据
-            LocalDateTime beginTime = LocalDateTime.of(begin, LocalTime.MIN);
-            LocalDateTime endTime = LocalDateTime.of(end, LocalTime.MAX);
+            LocalDateTime beginTime = LocalDateTime.of(date, LocalTime.MIN);
+            LocalDateTime endTime = LocalDateTime.of(date, LocalTime.MAX);
 
             Map map = new HashMap<>();
             map.put("begin", beginTime);
@@ -87,8 +87,8 @@ public class ReportServiceImpl implements ReportService {
 
         // 查询每天的用户数据并添加到turnoverList中
         for (LocalDate date : dateList) {
-            LocalDateTime beginTime = LocalDateTime.of(begin, LocalTime.MIN);
-            LocalDateTime endTime = LocalDateTime.of(end, LocalTime.MAX);
+            LocalDateTime beginTime = LocalDateTime.of(date, LocalTime.MIN);
+            LocalDateTime endTime = LocalDateTime.of(date, LocalTime.MAX);
 
             Map map = new HashMap<>();
             map.put("end", endTime);
@@ -145,7 +145,7 @@ public class ReportServiceImpl implements ReportService {
         //计算订单完成率
         Double orderCompletionRate = 0.0;
         if(totalOrderCount!= 0){
-            orderCompletionRate = validOrderCount.doubleValue() / totalOrderCount * 100;
+            orderCompletionRate = validOrderCount.doubleValue() / totalOrderCount ;
         }
 
 
