@@ -56,3 +56,7 @@ sky:
   wechat:
     appid: wxf080427d0444d985
     secret: 48fde871d0fd3cc64ce1c95112c71970
+  shop:
+    address:重庆市重庆邮电大学风华运动场
+  baidu:
+    ak:Xkz5GHYRRj2Q2qwpy8X2sZ8I2NFbLH2i
